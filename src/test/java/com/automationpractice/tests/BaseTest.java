@@ -1,5 +1,6 @@
 package com.automationpractice.tests;
 
+import com.automationpractice.pageobjects.Footer;
 import com.automationpractice.utils.Utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -17,6 +18,7 @@ import java.time.Duration;
 public class BaseTest {
 
     WebDriver driver;
+    Footer footer;
 
     @BeforeClass
     public void setup() {
@@ -24,6 +26,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Long.parseLong(Utils.readProperty("timeoutDuration"))));
         driver.manage().window().maximize();
         driver.get(Utils.readProperty("url"));
+
+        footer = new Footer(driver);
     }
 
     @AfterClass

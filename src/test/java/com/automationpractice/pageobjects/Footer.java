@@ -11,10 +11,8 @@ public class Footer extends BasePage {
     private WebElement newsletterEmailInput;
     @FindBy (css="[name='submitNewsletter']")
     private WebElement submitEmailButton;
-    @FindBy (css=".alert-success")
-    private WebElement successSubscribeMsg;
-    @FindBy (css=".alert-danger")
-    private WebElement failedSubscribeMsg;
+    @FindBy (css=".alert")
+    private WebElement alertMessage;
     @FindBy (xpath="//a[contains(@href,'facebook')]")
     private WebElement facebook;
     @FindBy (xpath="//a[contains(@href,'twitter')]")
@@ -28,19 +26,13 @@ public class Footer extends BasePage {
         super(driver);
     }
 
-    public void sendNewsletterEmail(String email) {
+    public void submitNewsletterEmail(String email) {
         fillText(newsletterEmailInput, email);
         click(submitEmailButton);
     }
 
-    public String getSuccessSubscribeMsg(){
-        waitForElementToBeVisible(successSubscribeMsg);
-        return getText(successSubscribeMsg);
-    }
-
-    public String getFailedSubscribeMsg(){
-        waitForElementToBeVisible(failedSubscribeMsg);
-        return getText(failedSubscribeMsg);
+    public String getAlertMessage(){
+        return getText(alertMessage);
     }
 
     public void goToSocialNetwork(String socialNetwork){
