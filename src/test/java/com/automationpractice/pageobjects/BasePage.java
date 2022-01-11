@@ -183,5 +183,4 @@ public class BasePage {
         return driver.manage().getCookieNamed(name);
     }
 
-
 }

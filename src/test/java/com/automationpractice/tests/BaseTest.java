@@ -18,11 +18,10 @@ public class BaseTest {
 
     WebDriver driver;
 
-
     @BeforeClass
     public void setup() {
         driver = WebDriverManager.chromedriver().create();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Long.parseLong(Utils.readProperty("timeoutDuration"))));
         driver.manage().window().maximize();
         driver.get(Utils.readProperty("url"));
     }
@@ -39,7 +38,7 @@ public class BaseTest {
     @AfterMethod
     public void failedTest(ITestResult result) {
         //check if the test failed
-        if (result.getStatus() == ITestResult.FAILURE ){
+        if (result.getStatus() == ITestResult.FAILURE) {
             TakesScreenshot ts = (TakesScreenshot)driver;
             File srcFile = ts.getScreenshotAs(OutputType.FILE);
             try {
