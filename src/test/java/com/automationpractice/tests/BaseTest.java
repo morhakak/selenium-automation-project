@@ -33,10 +33,10 @@ public class BaseTest {
         header = new Header(driver);
     }
 
-   // @AfterClass
-    //public void tearDown() {
-     //   driver.quit();
-    //}
+    @AfterClass
+    public void tearDown() {
+        driver.quit();
+    }
 
     /*
      * This method will run after each test,

@@ -47,8 +47,6 @@ public class Header extends Footer {
 
     //     Women's clothing menu
 
-    @FindBy(how = How.XPATH, using = "//*[@id='block_top_menu']/ul/li[1]/ul/li/a")
-    private List<WebElement> topsAndDresses;
     @FindBy(how = How.CSS, using = "//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li/a")
     private List<WebElement> top_items;
     @FindBy(how = How.CSS, using = "#block_top_menu .submenu-container > li > ul > li > a")
