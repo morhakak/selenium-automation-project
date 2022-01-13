@@ -1,6 +1,7 @@
 package com.automationpractice.tests;
 
 import com.automationpractice.pageobjects.Footer;
+import com.automationpractice.pageobjects.Header;
 import com.automationpractice.utils.Utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -19,6 +20,7 @@ public class BaseTest {
 
     WebDriver driver;
     Footer footer;
+    Header header;
 
     @BeforeClass
     public void setup() {
@@ -28,12 +30,13 @@ public class BaseTest {
         driver.get(Utils.readProperty("url"));
 
         footer = new Footer(driver);
+        header = new Header(driver);
     }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-    }
+   // @AfterClass
+    //public void tearDown() {
+     //   driver.quit();
+    //}
 
     /*
      * This method will run after each test,
