@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 public class AuthenticationPageTests extends BaseTest {
 
-
     @Test (description = "Verify landing on Authentication page")
     public void tc_verifyAuthenticationPage() {
         header.clickOnSignIn();
@@ -24,8 +23,7 @@ public class AuthenticationPageTests extends BaseTest {
     public void tc_enterValidEmail() {
         header.clickOnSignIn();
         authenticationPage.enterCreateEmail("test1715@test.com");
-        String registerPageInfoHeading = registerPage.getPersonalInfoHeading();
-        Assert.assertEquals(registerPageInfoHeading, "YOUR PERSONAL INFORMATION");
+        Assert.assertEquals(registerPage.getPersonalInfoHeading(), "YOUR PERSONAL INFORMATION");
     }
 
     @Test (description = "Enter invalid email in create an account section")
