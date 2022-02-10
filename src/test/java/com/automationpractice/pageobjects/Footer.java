@@ -5,7 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class Footer extends BasePage {
+
+    public static enum SocialNetworkEnum {
+        FACEBOOK,
+        TWITTER,
+        YOUTUBE,
+        GOOGLE
+    }
 
     @FindBy (css="#newsletter-input")
     private WebElement newsletterEmailInput;
@@ -13,14 +22,13 @@ public class Footer extends BasePage {
     private WebElement submitEmailButton;
     @FindBy (css=".alert")
     private WebElement alertMessage;
-    @FindBy (xpath="//a[contains(@href,'facebook')]")
-    private WebElement facebook;
-    @FindBy (xpath="//a[contains(@href,'twitter')]")
-    private WebElement twitter;
-    @FindBy (xpath="//a[contains(@href,'youtube')]")
-    private WebElement youtube;
-    @FindBy (xpath="//a[contains(@href,'google')]")
-    private WebElement googlePlus;
+    @FindBy (xpath="//section[@id='block_contact_infos']//li[1]")
+    private WebElement storeLocation;
+    @FindBy (xpath="//section[@id='block_contact_infos']//li//span[contains(text(),'466')]")
+    private WebElement storePhoneNumber;
+    @FindBy (xpath="//section[@id='block_contact_infos']//li//span/a")
+    private WebElement storeEmail;
+
 
     public Footer(WebDriver driver) {
         super(driver);
@@ -35,20 +43,21 @@ public class Footer extends BasePage {
         return getText(alertMessage);
     }
 
-    public void goToSocialNetwork(String socialNetwork){
+    public void goToSocialNetworks(SocialNetworkEnum socialNetwork){
 
+        List<WebElement> socialNetworks = driver.findElements(By.xpath("//section[@id='social_block']//ul//li//a"));
         switch (socialNetwork) {
-            case "facebook":
-                click(facebook);
+            case FACEBOOK:
+                click(socialNetworks.get(0));
                 break;
-            case "twitter":
-                click(twitter);
+            case TWITTER:
+                click(socialNetworks.get(1));
                 break;
-            case "youtube":
-                click(youtube);
+            case YOUTUBE:
+                click(socialNetworks.get(2));
                 break;
-            case "google plus":
-                click(googlePlus);
+            case GOOGLE:
+                click(socialNetworks.get(3));
                 break;
         }
     }
@@ -65,5 +74,16 @@ public class Footer extends BasePage {
         driver.findElement(By.partialLinkText(myAccountOption)).click();
     }
 
+    public String getStoreLocation(){
+        return getText(storeLocation);
+    }
+
+    public String getStorePhoneNumber(){
+        return getText(storePhoneNumber);
+    }
+
+    public String getStoreEmail(){
+        return getText(storeEmail);
+    }
 
 }

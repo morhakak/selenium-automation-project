@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
 import java.util.List;
 
 public class Header extends Footer {
@@ -24,7 +23,6 @@ public class Header extends Footer {
         CASUAL_DRESSES,
         EVENING_DRESSES,
         SUMMER_DRESSES
-
     }
 
     @FindBy(how = How.CSS, using = ".header_user_info .login")
@@ -41,11 +39,11 @@ public class Header extends Footer {
     private WebElement searchField;
     @FindBy(how = How.CSS, using = ".logo.img-responsive")
     private WebElement storeIcon;
-    // elements of top nemu
+    // elements of top menu
     @FindBy(how = How.CSS, using = ".sf-menu.clearfix> li> a")
     private List<WebElement> topMenu;
 
-    //     Women's clothing menu
+    // Women's clothing menu
 
     @FindBy(how = How.CSS, using = "//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li/a")
     private List<WebElement> top_items;

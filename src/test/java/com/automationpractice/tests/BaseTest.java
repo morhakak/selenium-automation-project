@@ -1,7 +1,9 @@
 package com.automationpractice.tests;
 
+import com.automationpractice.pageobjects.AuthenticationPage;
 import com.automationpractice.pageobjects.Footer;
 import com.automationpractice.pageobjects.Header;
+import com.automationpractice.pageobjects.RegisterPage;
 import com.automationpractice.utils.Utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -21,6 +23,8 @@ public class BaseTest {
     WebDriver driver;
     Footer footer;
     Header header;
+    AuthenticationPage authenticationPage;
+    RegisterPage registerPage;
 
     @BeforeClass
     public void setup() {
@@ -29,8 +33,13 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get(Utils.readProperty("url"));
 
+        /* Initialize pages */
+
         footer = new Footer(driver);
         header = new Header(driver);
+        authenticationPage = new AuthenticationPage(driver);
+        registerPage = new RegisterPage(driver);
+
     }
 
     @AfterClass
