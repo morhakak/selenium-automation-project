@@ -3,7 +3,7 @@ package com.automationpractice.tests;
 import com.automationpractice.pageobjects.AuthenticationPage;
 import com.automationpractice.pageobjects.Footer;
 import com.automationpractice.pageobjects.Header;
-import com.automationpractice.pageobjects.RegisterPage;
+import com.automationpractice.pageobjects.HomePage;
 import com.automationpractice.utils.Utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
@@ -14,6 +14,8 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
@@ -23,8 +25,7 @@ public class BaseTest {
     WebDriver driver;
     Footer footer;
     Header header;
-    AuthenticationPage authenticationPage;
-    RegisterPage registerPage;
+    HomePage homePage;
 
     @BeforeClass
     public void setup() {
@@ -33,13 +34,13 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get(Utils.readProperty("url"));
 
-        /* Initialize pages */
-
         footer = new Footer(driver);
         header = new Header(driver);
-        authenticationPage = new AuthenticationPage(driver);
-        registerPage = new RegisterPage(driver);
-
+        homePage = new HomePage(driver);
+    }
+    @BeforeMethod
+    public void startFromTheHomePage (){
+        driver.get(Utils.readProperty("url"));
     }
 
     @AfterClass

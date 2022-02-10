@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+
 import java.util.List;
 
 public class Header extends Footer {
@@ -23,27 +24,28 @@ public class Header extends Footer {
         CASUAL_DRESSES,
         EVENING_DRESSES,
         SUMMER_DRESSES
+
     }
 
-    @FindBy(how = How.CSS, using = ".header_user_info .login")
+    @FindBy(css = ".header_user_info .login")
     private WebElement signIn;
-    @FindBy(how = How.CSS, using = "#contact-link a")
+    @FindBy(css = "#contact-link a")
     private WebElement contactUs;
-    @FindBy(how = How.CSS, using = ".shopping_cart  :nth-child(1)")
+    @FindBy(css = ".shopping_cart  :nth-child(1)")
     private WebElement cart;
-    @FindBy(how = How.CSS, using = ".shop-phone strong")
+    @FindBy(css = ".shop-phone strong")
     private WebElement numOfSite;
-    @FindBy(how = How.NAME, using = "submit_search")
+    @FindBy(name = "submit_search")
     private WebElement clickOfSearch;
-    @FindBy(how = How.ID, using = "search_query_top")
+    @FindBy(id = "search_query_top")
     private WebElement searchField;
-    @FindBy(how = How.CSS, using = ".logo.img-responsive")
+    @FindBy(css = ".logo.img-responsive")
     private WebElement storeIcon;
-    // elements of top menu
-    @FindBy(how = How.CSS, using = ".sf-menu.clearfix> li> a")
+    // elements of top nemu
+    @FindBy(css = ".sf-menu.clearfix> li> a")
     private List<WebElement> topMenu;
 
-    // Women's clothing menu
+    //     Women's clothing menu
 
     @FindBy(how = How.CSS, using = "//*[@id='block_top_menu']/ul/li[1]/ul/li[1]/ul/li/a")
     private List<WebElement> top_items;
