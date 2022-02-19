@@ -9,14 +9,7 @@ public class AuthenticationPageTests extends BaseTest {
     @Test (description = "Verify landing on Authentication page")
     public void tc_verifyAuthenticationPage() {
         header.clickOnSignIn();
-        Assert.assertTrue(authenticationPage.verifyLandingOnHomePage());
-    }
-
-    @Test (description = "Verify returning to home page")
-    public void tc_verifyReturnToHomePage() {
-        header.clickOnSignIn();
-        authenticationPage.returnToHomePage();
-        Assert.assertTrue(driver.getTitle().contains("My Store"));
+        Assert.assertTrue(authenticationPage.verifyLandingOnLoginPage());
     }
 
     @Test (description = "Enter new and valid email")
@@ -26,7 +19,7 @@ public class AuthenticationPageTests extends BaseTest {
         Assert.assertEquals(registerPage.getPersonalInfoHeading(), "YOUR PERSONAL INFORMATION");
     }
 
-    @Test (description = "Enter invalid email in create an account section")
+    @Test (description = "Enter invalid email in \"create an account\" section")
     public void tc_enterInvalidEmail() {
         header.clickOnSignIn();
         authenticationPage.enterCreateEmail("test.test");
@@ -46,7 +39,7 @@ public class AuthenticationPageTests extends BaseTest {
     public void tc_signInWithInvalidEmail(String email, String password) {
         header.clickOnSignIn();
         authenticationPage.signIn(email,password);
-        String errorMsg = authenticationPage.getRegisteredErrorMsg();
+        String errorMsg = authenticationPage.getLoginErrorMsg();
         Assert.assertTrue(errorMsg.toLowerCase().contains("invalid email"));
     }
 
@@ -54,7 +47,7 @@ public class AuthenticationPageTests extends BaseTest {
     public void tc_signInWithInvalidPassword(String email, String password) {
         header.clickOnSignIn();
         authenticationPage.signIn(email,password);
-        String errorMsg = authenticationPage.getRegisteredErrorMsg();
+        String errorMsg = authenticationPage.getLoginErrorMsg();
         Assert.assertTrue(errorMsg.toLowerCase().contains("invalid password") ||
                                     errorMsg.toLowerCase().contains("password is required"));
     }

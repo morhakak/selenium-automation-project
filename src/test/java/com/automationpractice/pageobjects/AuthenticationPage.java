@@ -29,7 +29,7 @@ public class AuthenticationPage extends Header{
         super(driver);
     }
 
-    public boolean verifyLandingOnHomePage() {
+    public boolean verifyLandingOnLoginPage() {
         String pageTitle = driver.getTitle();
         if (pageTitle.toLowerCase().contains("login")) {
             return true;
@@ -39,12 +39,11 @@ public class AuthenticationPage extends Header{
     }
 
     public void returnToHomePage() {
-        click(returnHomeBtn);
+        clickOnIconSite();
     }
 
     public void enterCreateEmail(String email) {
         fillText(CreateAccountEmailInput, email);
-        tab(CreateAccountEmailInput);
         click(submitEmailAccountBtn);
     }
 
@@ -62,7 +61,7 @@ public class AuthenticationPage extends Header{
         click(forgotPasswordLink);
     }
 
-    public String getRegisteredErrorMsg() {
+    public String getLoginErrorMsg() {
         return getText(registeredErrorMsg);
     }
 
