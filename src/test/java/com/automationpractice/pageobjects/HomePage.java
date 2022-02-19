@@ -29,21 +29,21 @@ public class HomePage extends Header {
     }
 
     @FindBy(className = "bx-viewport")
-    WebElement homeSlider;
+    private WebElement homeSlider;
     @FindBy(className = "col-xs-4")
-    List<WebElement> productTitles;
+    private List<WebElement> productTitles;
     @FindBy(css = "#home-page-tabs > li > a")
-    List<WebElement> displayBySort;
+    private List<WebElement> displayBySort;
     @FindBy(css = ".right-block> [itemprop='name']>a")
-    List<WebElement> homeItemsName;
+    private List<WebElement> homeItemsName;
     @FindBy(className = "ajax_add_to_cart_button")
-    List<WebElement> addToCart;
+    private List<WebElement> addToCart;
     @FindBy(css = ".cross[title='Close window']")
-    WebElement exitPopupAddToCart;
+    private WebElement exitPopupAddToCart;
     @FindBy(css = ".shopping_cart> a")
-    WebElement hoveringOnTheCart;
+    private WebElement hoveringOnTheCart;
     @FindBy(css = ".price.cart_block_total.ajax_block_cart_total")
-    WebElement updatedPriceOnTheCartTotal;
+    private WebElement updatedPriceOnTheCartTotal;
 
 
     @FindBy(css = ".button-container .button.lnk_view.btn.btn-default")

@@ -25,6 +25,7 @@ public class BaseTest {
     HomePage homePage;
     AuthenticationPage authenticationPage;
     RegisterPage registerPage;
+    ContactPage contactPage;
 
     @BeforeClass
     public void setup() {
@@ -39,6 +40,7 @@ public class BaseTest {
         homePage = new HomePage(driver);
         authenticationPage = new AuthenticationPage(driver);
         registerPage = new RegisterPage(driver);
+        contactPage = new ContactPage(driver);
     }
     @BeforeMethod
     public void startFromTheHomePage (){

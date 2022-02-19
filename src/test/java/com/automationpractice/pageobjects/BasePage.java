@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -18,6 +19,7 @@ public class BasePage {
     Actions action;
     JavascriptExecutor javascriptExecutor;
     WebDriverWait wait;
+    Select select;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -39,6 +41,18 @@ public class BasePage {
         highlightElement(el, "yellow");
         sleep(500);
         el.click();
+    }
+    public void selectByText (WebElement el, String text){
+        select = new Select(el);
+        select.selectByVisibleText(text);
+    }
+    public void selectByIndex (WebElement el, int index){
+        select = new Select(el);
+        select.selectByIndex(index);
+    }
+    public void selectByValue (WebElement el, String value){
+        select = new Select(el);
+        select.selectByValue(value);
     }
 
     public String getText(WebElement el) {
